@@ -10,3 +10,8 @@ download Postman
 
 How to clone project:
 git clone https://github.com/aionius/devconnector
+
+How to commit project:
+git add .
+git commit -m "<comment>"
+git push origin master
