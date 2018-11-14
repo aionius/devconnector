@@ -235,10 +235,7 @@ router.post(
 router.post(
   "",
   passport.authenticate("jwt", { session: false }),
-  (req, res) => {
-
-    Profile.
-  }
+  (req, res) => {}
 );
 
 // @route   POST api/profile/education
