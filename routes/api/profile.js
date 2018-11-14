@@ -228,4 +228,26 @@ router.post(
     });
   }
 );
+
+// @route   POST api/profile/experience
+// @desc    Delete experience from profile
+// @access  Private
+router.post(
+  "",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+
+    Profile.
+  }
+);
+
+// @route   POST api/profile/education
+// @desc    Delete education from profile
+// @access  Private
+router.post(
+  "",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {}
+);
+
 module.exports = router;
