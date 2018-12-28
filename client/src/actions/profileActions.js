@@ -2,8 +2,9 @@ import axios from "axios";
 import {
   GET_PROFILE,
   PROFILE_LOADING,
-  // GET_ERRORS,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  GET_ERRORS,
+  SET_CURRENT_USER
 } from "./types";
 
 // get current profile
@@ -23,6 +24,82 @@ export const getCurrentProfile = () => dispatch => {
         payload: {}
       })
     );
+};
+
+// create profile
+export const createProfile = (profileData, history) => dispatch => {
+  axios
+    .post("/api/profile", profileData)
+    .then(result => history.push("/dashboard"))
+    .catch(error =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data
+      })
+    );
+};
+
+// add experience
+export const addExperience = (expData, history) => dispatch => {
+  axios
+    .post("/api/profile/experience", expData)
+    .then(result => history.push("/dashboard"))
+    .catch(error =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data
+      })
+    );
+};
+
+// delete experience
+export const deleteExperience = id => dispatch => {
+  axios
+    .delete(`/api/profile/experience/{id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(error =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data
+      })
+    );
+};
+
+// add education
+export const addEducation = (eduData, history) => dispatch => {
+  axios
+    .post("/api/profile/education", eduData)
+    .then(result => history.push("/dashboard"))
+    .catch(error =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data
+      })
+    );
+};
+// delete account
+export const deleteAccount = () => dispatch => {
+  if (window.confirm("Are you sure? This can NOT be undone!")) {
+    axios
+      .delete("/api/profile")
+      .then(res =>
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {}
+        })
+      )
+      .catch(error =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: error.response.data
+        })
+      );
+  }
 };
 
 // profile loading
