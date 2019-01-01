@@ -18,7 +18,7 @@ class Experience extends Component {
         <td>
           <Moment format="YYYY/MM/DD">{exp.from}</Moment> -
           {exp.to === null ? (
-            "Now"
+            " Now"
           ) : (
             <Moment format="YYYY/MM/DD">{exp.to}</Moment>
           )}
