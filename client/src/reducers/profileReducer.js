@@ -2,13 +2,15 @@ import {
   GET_PROFILE,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  GET_PROFILES
+  GET_PROFILES,
+  GET_PROFILE_BY_USER_ID
 } from "../actions/types";
 
 const initialState = {
   profile: null,
   profiles: null,
-  loading: false
+  loading: false,
+  user: null
 };
 
 export default function(state = initialState, action) {
@@ -34,6 +36,11 @@ export default function(state = initialState, action) {
       return {
         ...state,
         profile: null
+      };
+    case GET_PROFILE_BY_USER_ID:
+      return {
+        ...state,
+        profile: action.payload
       };
     default:
       return state;

@@ -5,7 +5,8 @@ import {
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
   SET_CURRENT_USER,
-  GET_PROFILES
+  GET_PROFILES,
+  GET_PROFILE_BY_USER_ID
 } from "./types";
 
 // get current profile
@@ -40,6 +41,23 @@ export const getProfileByHandle = handle => dispatch => {
     .catch(error =>
       dispatch({
         type: GET_PROFILE,
+        payload: null
+      })
+    );
+};
+
+export const getProfileByUserId = user_id => dispatch => {
+  axios
+    .get(`/api/profile/user/${user_id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE_BY_USER_ID,
+        payload: res.data
+      })
+    )
+    .catch(error =>
+      dispatch({
+        type: GET_PROFILE_BY_USER_ID,
         payload: null
       })
     );

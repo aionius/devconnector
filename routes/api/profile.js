@@ -80,6 +80,7 @@ router.get("/handle/:handle", (req, res) => {
 
 // @route   GET api/user/:user_id
 // @desc    Get profile by user_id
+// @access  Public
 router.get("/user/:user_id", (req, res) => {
   const errors = {};
   Profile.findOne({ user: req.params.user_id })
@@ -95,7 +96,6 @@ router.get("/user/:user_id", (req, res) => {
       res.status(404).json({ profile: "There is no profile for this user" })
     );
 });
-// @access  Public
 
 // @route   POST api/profile
 // @desc    Create user profile

@@ -9,7 +9,8 @@ import {
 const initialState = {
   posts: [],
   post: {},
-  loading: false
+  loading: false,
+  profile: {}
 };
 
 export default function(state = initialState, action) {
@@ -41,6 +42,7 @@ export default function(state = initialState, action) {
         ...state,
         posts: state.posts.filter(post => post._id !== action.payload)
       };
+
     default:
       return state;
   }
